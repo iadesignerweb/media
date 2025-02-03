@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baixar eBooks - Leitura Digital</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
+            background-size: 300% 300%;
+            animation: gradientAnimation 10s ease infinite;
+            color: white;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .product-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(8px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .product-item h3 {
+            font-size: 18px;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+
+        .product-item p {
+            font-size: 14px;
+            color: #f0f0f0;
+            margin-bottom: 10px;
+        }
+
+        .product-item a {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #ff6f61;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .product-item a:hover {
+            background: #ff3b2f;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            }
+
+            header {
+                font-size: 20px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>eBooks Importantes</h1>
+    </header>
+
+    <div class="product-grid" id="product-container">
+        <!-- Produtos serão carregados dinamicamente pelo JavaScript -->
+    </div>
+
+    <footer>
+        <p>&copy; 2025 - Todos os direitos reservados | Plínio Fabrício</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const products = [
+                { img: "https://raw.githubusercontent.com/iadesignerweb/imagens/refs/heads/main/Screenshot_20250203-190706_Samsung%20Notes.jpg", title: "E-book de IA para iniciantes", desc: "Um E-book para iniciantes em Inteligência Artificial.", link: "https://wa.me/5587999786261" },
+                { img: "https://raw.githubusercontent.com/iadesignerweb/imagens/refs/heads/main/IMG_20250203_192109.png", title: "E-book de E-mail de Marketing", desc: "Método para dominar e-mail de Marketing.", link: "https://wa.me/5587999786261" },
+                { img: "https://raw.githubusercontent.com/iadesignerweb/imagens/refs/heads/main/Screenshot_20250203-192732_Samsung%20Notes.jpg", title: "E-book Página de Vendas", desc: "O caminho para seu negócio.", link: "https://wa.me/5587999786261" },
+                { img: "https://raw.githubusercontent.com/iadesignerweb/imagens/refs/heads/main/Screenshot_20250203-193527_Samsung%20Notes.jpg", title: "E-book Designer", desc: "Explore dicas importantes para um bom design.", link: "https://wa.me/5587999786261" },
+                { img: "https://raw.githubusercontent.com/iadesignerweb/imagens/refs/heads/main/Screenshot_20250203-194229_Samsung%20Notes.jpg", title: "E-book de PLR", desc: "A importância dos PLR's e o que é?.", link: "https://wa.me/5587999786261" }
+            ];
+
+            const container = document.getElementById("product-container");
+
+            products.forEach(product => {
+                const item = document.createElement("div");
+                item.classList.add("product-item");
+
+                item.innerHTML = `
+                    <img src="${product.img}" alt="${product.title}">
+                    <h3>${product.title}</h3>
+                    <p>${product.desc}</p>
+                    <a href="${product.link}" download>Baixar Agora</a>
+                `;
+
+                container.appendChild(item);
+            });
+        });
+    </script>
+</body>
+</html>
